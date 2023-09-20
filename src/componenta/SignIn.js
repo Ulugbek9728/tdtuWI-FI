@@ -7,6 +7,8 @@ import {Link} from "react-router-dom";
 import {Admin} from "./action";
 import {useDispatch} from "react-redux";
 import {ApiUrl} from "./domenName";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 
 function SignIn(props) {
@@ -46,7 +48,8 @@ function SignIn(props) {
         }
     }
 
-    return (
+    return (<>
+            <Navbar/>
         <div className="SignIn">
             <Link to={"/"} className="ortga"><i
                 className="fa-solid fa-angles-left mx-1"/> Ortga
@@ -55,13 +58,14 @@ function SignIn(props) {
                 <ToastContainer/>
 
                 <img className="Logo" src="./img/LOGO_TDTU_(2).png " alt=""/>
-                <h3>Log in</h3>
+                <h3>WI FI dan foydalanish uchun ariza topshirish</h3>
+                <p>"Hemis" Talaba ID ni kiriting</p>
 
                 <input type="text" value={login} onChange={(e) => setLogin(e.target.value.toUpperCase())}
-                       className="form-control" placeholder="Enter login" maxLength="9"/>
+                       className="form-control" placeholder="Talaba ID" maxLength="9"/>
                 <div className="inputBox">
                     <input type={passwordBoolin ? "password" : "text"}
-                           className="form-control" placeholder="Enter password"
+                           className="form-control" placeholder="Parol"
                            value={password} onChange={(e) => setPassword(e.target.value)}/>
                     {passwordBoolin ?
                         <img onClick={() => setPasswordBoolin(!passwordBoolin)} src="./img/show(1).png" alt=""/>
@@ -69,11 +73,13 @@ function SignIn(props) {
                         <img onClick={() => setPasswordBoolin(!passwordBoolin)} src="./img/show.png" alt=""/>
                     }
                 </div>
-                <button onClick={Login} type="submit" className="form-control">Log in</button>
+                <button onClick={Login} type="submit" className="form-control">Kirish</button>
 
             </div>
             <img className="GroupImg" src="./img/Group5.svg" alt=""/>
         </div>
+            <Footer/>
+        </>
     );
 }
 

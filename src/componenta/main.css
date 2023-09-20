@@ -44,34 +44,36 @@ a {
     font-size: 24px;
     font-weight: bold;
 }
-.App .box .navbar {
+.navbar {
     width: 100%;
     height: 90px;
     background-color: #15523D;
     margin-bottom: 40px;
 }
-.App .box .navbar .container {
+.navbar .container {
     justify-content: center;
 }
-.App .box .navbar .container .navBox {
+.navbar .container .navBox {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.App .box .navbar .container .navBox .title {
+.navbar .container .navBox .title {
     text-align: center;
     font-weight: bold;
     line-height: 120%;
     font-size: 35px;
     color: white;
 }
-.App .box .karobka .logoNavbar {
-    opacity: 0.9;
+.App .box .karobka .ortga {
     position: absolute;
-    top: 170px;
-    left: 50px;
-    width: 150px;
+    top: 20%!important;
+    left: 40px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 120%;
 }
 .App .box .karobka .button-container-2 {
     position: absolute;
@@ -270,8 +272,7 @@ a {
 .App .box .karobka .righte .boxcha .zzz {
     height: 206px !important;
 }
-.App .box .footer {
-    margin-top: 40px;
+.footer {
     width: 100%;
     height: 100px;
     padding: 10px 50px;
@@ -318,12 +319,12 @@ a {
     letter-spacing: 1px;
 }
 
-.App .box .footer .wrapper {
+.footer .wrapper {
     display: flex;
     list-style: none;
     padding: 0!important;
 }
-.App .box .footer .wrapper .icon {
+.footer .wrapper .icon {
     position: relative;
     background: #ffffff;
     border-radius: 50%;
@@ -340,22 +341,22 @@ a {
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.App .box .footer .wrapper .facebook {
+.footer .wrapper .facebook {
     color: #1877F2 !important;
 }
-.App .box .footer .wrapper .youtube {
+.footer .wrapper .youtube {
     color: #CD201F !important;
 }
-.App .box .footer .wrapper .twitter {
+.footer .wrapper .twitter {
     color: #1DA1F2 !important;
 }
-.App .box .footer .wrapper .instagram {
+.footer .wrapper .instagram {
     color: #E4405F !important;
 }
-.App .box .footer .wrapper .telegram {
+.footer .wrapper .telegram {
     color: #229ED9 !important;
 }
-.App .box .footer .wrapper .tooltip {
+.footer .wrapper .tooltip {
     position: absolute;
     top: 0;
     font-size: 14px;
@@ -368,7 +369,7 @@ a {
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.App .box .footer .wrapper .tooltip::before {
+.footer .wrapper .tooltip::before {
     position: absolute;
     content: "";
     height: 8px;
@@ -380,45 +381,45 @@ a {
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.App .box .footer .wrapper .icon:hover .tooltip {
+.footer .wrapper .icon:hover .tooltip {
     top: -45px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
-.App .box .footer .wrapper .icon:hover span, .wrapper .icon:hover .tooltip {
+.footer .wrapper .icon:hover span, .wrapper .icon:hover .tooltip {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.App .box .footer .wrapper .facebook:hover,
+.footer .wrapper .facebook:hover,
 .wrapper .facebook:hover .tooltip,
 .wrapper .facebook:hover .tooltip::before {
     background: #1877F2 !important;
     color: #ffffff !important;
 }
 
-.App .box .footer .wrapper .twitter:hover,
+.footer .wrapper .twitter:hover,
 .wrapper .twitter:hover .tooltip,
 .wrapper .twitter:hover .tooltip::before {
     background: #1DA1F2 !important;
     color: #ffffff !important;
 }
 
-.App .box .footer .wrapper .instagram:hover,
+.footer .wrapper .instagram:hover,
 .wrapper .instagram:hover .tooltip,
 .wrapper .instagram:hover .tooltip::before {
     background: #E4405F !important;
     color: #ffffff !important;
 }
 
-.App .box .footer .wrapper .youtube:hover,
+.footer .wrapper .youtube:hover,
 .wrapper .youtube:hover .tooltip,
 .wrapper .youtube:hover .tooltip::before {
     background: #CD201F !important;
     color: #ffffff !important;
 }
 
-.App .box .footer .wrapper .telegram:hover,
+.footer .wrapper .telegram:hover,
 .wrapper .telegram:hover .tooltip,
 .wrapper .telegram:hover .tooltip::before {
     background: #229ED9 !important;

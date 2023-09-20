@@ -5,6 +5,8 @@ import Shartlar from "./componenta/shartlar";
 import Natija from "./componenta/natija";
 import SignIn from "./componenta/SignIn";
 import Adminpanelll from "./componenta/Adminpanelll";
+import One from "./page/one";
+
 
 
 
@@ -12,11 +14,16 @@ function App(props) {
     return (
         <div>
             <Routes>
-                <Route path={"/"} element={<HomPage/>}/>
-                <Route path={"/:id"} element={<HomPage/>}/>
+
+                {/*<Route path={"/:id"} element={<HomPage/>}/>*/}
+
+                <Route path={"/"} element={<One/>}/>
+                <Route path={"/Student"} element={<SignIn/>}/>
                 <Route path={"/shartlar"} element={<Shartlar/>}/>
+                <Route path={"/Employee"} element={<HomPage/>}/>
+
+
                 <Route path={"/natija"} element={<Natija/>}/>
-                <Route path={"/SignInAdmin"} element={<SignIn/>}/>
                 <Route path={"/AdminPanell/*"} element={<Adminpanelll/>}/>
             </Routes>
         </div>

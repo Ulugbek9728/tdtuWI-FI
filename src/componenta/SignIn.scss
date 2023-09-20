@@ -1,7 +1,6 @@
 .SignIn {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
   background-color: #1B6B50;
   overflow: hidden;
   box-sizing: border-box;
@@ -18,9 +17,10 @@
 
   .Signbox {
     width: 496px;
-    min-height: 500px;
+    min-height: 67.8vh;
     margin: 80px auto 0 auto;
-
+    z-index: 100;
+    position: relative;
 
     .Logo {
       width: 173px;
@@ -36,6 +36,12 @@
       line-height: 44px;
       text-align: center;
       margin: 30px 0 40px 0;
+      color: #FFFFFF;
+      opacity: 0.68;
+    }
+
+    p{
+      text-align: center;
       color: #FFFFFF;
       opacity: 0.68;
     }
@@ -85,12 +91,10 @@
   }
 
   .GroupImg {
+    position: absolute;
+    bottom: -10%;
     width: 100%;
   }
 }
 
-@media (max-width: 1000px){
-  .SignIn{
-    display: none;
-  }
-}
+
