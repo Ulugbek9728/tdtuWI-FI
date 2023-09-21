@@ -16,12 +16,12 @@ function One(props) {
                     <h3>WI FI dan foydalanish uchun ariza topshirish</h3>
 
 
-                    <Link to={'/Student'}>
+                    <Link to={'/student'} onClick={()=>localStorage.setItem("user", "Student")}>
                         <button type="submit" className="form-control">
                             Talaba
                         </button>
                     </Link>
-                    <Link to={'/Employee'} >
+                    <Link to={'/employee'} onClick={()=>localStorage.setItem("user", "Employee")}>
                         <button type="submit" className="form-control my-4">Xodim</button>
                     </Link>
 

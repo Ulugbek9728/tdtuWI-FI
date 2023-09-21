@@ -23,18 +23,21 @@ function SignIn(props) {
 
 
     function Login() {
-        axios.post(`${ApiUrl}/auth/login`,
-            {login, password}).then((response) => {
-            if (response.status === 200) {
-                dispatch(Admin(login));
-                localStorage.setItem("token", response.data.jwt);
-                setLogin('');
-                setPassword('');
-                navigate("/AdminPanell")
-            }
-        }).catch((error) => {
-           setMessage(error.response.data);
-        })}
+        navigate("/studentInfo")
+        // axios.post(`${ApiUrl}/auth/login`,
+        //     {login, password}).then((response) => {
+        //     if (response.status === 200) {
+        //         dispatch(Admin(login));
+        //         localStorage.setItem("token", response.data.jwt);
+        //         setLogin('');
+        //         setPassword('');
+        //         navigate("/AdminPanell")
+        //     }
+        // }).catch((error) => {
+        //     console.log(error.response)
+        //    setMessage(error.response.data);
+        // })
+}
 
     useEffect(() => {
         notify();

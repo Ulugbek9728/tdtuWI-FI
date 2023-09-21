@@ -6,6 +6,7 @@ import Natija from "./componenta/natija";
 import SignIn from "./componenta/SignIn";
 import Adminpanelll from "./componenta/Adminpanelll";
 import One from "./page/one";
+import StudentInfo from "./page/studentInfo";
 
 
 
@@ -18,13 +19,14 @@ function App(props) {
                 {/*<Route path={"/:id"} element={<HomPage/>}/>*/}
 
                 <Route path={"/"} element={<One/>}/>
-                <Route path={"/Student"} element={<SignIn/>}/>
+                <Route path={"/student"} element={<SignIn/>}/>
                 <Route path={"/shartlar"} element={<Shartlar/>}/>
-                <Route path={"/Employee"} element={<HomPage/>}/>
+                <Route path={"/employee"} element={<HomPage/>}/>
+                <Route path={"/studentInfo"} element={<StudentInfo/>}/>
 
 
                 <Route path={"/natija"} element={<Natija/>}/>
-                <Route path={"/AdminPanell/*"} element={<Adminpanelll/>}/>
+                <Route path={"/sdminPanell/*"} element={<Adminpanelll/>}/>
             </Routes>
         </div>
     );

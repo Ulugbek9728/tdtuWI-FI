@@ -213,19 +213,6 @@ useEffect(()=>{
                                         <p>VIDEO QO'LLANMA</p>
                                     </button>
                                 </a>
-                                <div className="zzz"/>
-                                <div className="title">
-                                    Foydalanuvchining Wi-Fi tarmog'idagi holatini tekshirish va "ID" sini olish.
-                                </div>
-                                <label htmlFor="Logintest">Login:</label><br/>
-                                <input onChange={(e) => setLogintest(e.target.value.toUpperCase())}
-                                       id="Logintest" value={logintest} maxLength="9" type="text"
-                                       placeholder="Pasport seriyangiz" className="input"/>
-
-                                <button onClick={profile_flu_info} className="button-container-2 tekshirish">
-                                    <span className="mas">TEKSHIRISH</span>
-                                    <p>TEKSHIRISH</p>
-                                </button>
 
                             </div>
                         </div>
