@@ -8,7 +8,7 @@ function Shartlar(props) {
         <div className="shartlarBox">
             <div className="box">
 
-                <Link to={"/employee"}><i className="fa-solid fa-angles-left"/> Ortga</Link>
+                <Link to={"/"}><i className="fa-solid fa-angles-left"/> Ortga</Link>
 
                 <h1 align="center">Universitet hududida Wi-Fi tarmog'idan foydalanish shartlari</h1>
                 <p align="justify">

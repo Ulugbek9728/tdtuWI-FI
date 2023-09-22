@@ -184,7 +184,7 @@ useEffect(()=>{
                                            placeholder="Telefon raqamingiz"/>
 
                                     <div className="shartlar">
-                                        <Link to={"/shartlar"}>Foydalanish shartlari</Link>
+                                        <a href={"/shartlar"} target='_blank'>Foydalanish shartlari</a>
                                         <span>
                                             <label htmlFor="shart">Shartlarga roziman</label>
                                             <input onClick={() => setShartlar(!shartlar)} id="shart" type="checkbox"/>
