@@ -4,9 +4,3 @@ export const Actions = (data) => {
         payload:data
     }
 };
-export const Admin = (data) => {
-    return {
-        type:"ADMIN",
-        payload:data
-    }
-};

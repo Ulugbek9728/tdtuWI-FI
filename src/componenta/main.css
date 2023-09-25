@@ -16,7 +16,7 @@ a {
 }
 .inputBox img{
     position: absolute;
-    top: 0px;
+    top: 0;
     cursor: pointer;
     right: 22px;
     width: 7%;
@@ -48,7 +48,6 @@ a {
     width: 100%;
     height: 90px;
     background-color: #15523D;
-    margin-bottom: 40px;
 }
 .navbar .container {
     justify-content: center;
@@ -66,212 +65,7 @@ a {
     font-size: 35px;
     color: white;
 }
-.App .box .karobka .ortga {
-    position: absolute;
-    top: 20%!important;
-    left: 40px;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    line-height: 120%;
-}
-.App .box .karobka .button-container-2 {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    margin-top: 7vh;
-    overflow: hidden;
-    border: 1px solid #1B6B50;
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    transition: 0.5s;
-    letter-spacing: 1.5px;
-    border-radius: 8px;
-    background-color: inherit;
-}
-.App .box .karobka .button-container-2 p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 101%;
-    height: 100%;
-    font-family: 'Lato', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    font-weight: bold;
-    background: #1B6B50;
-    -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
-    mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
-    -webkit-mask-size: 3000% 100%;
-    mask-size: 3000% 100%;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    -webkit-animation: ani2 0.7s steps(29) forwards;
-    animation: ani2 0.7s steps(29) forwards;
-}
-.App .box .karobka .button-container-2 p:hover {
-    -webkit-animation: ani 0.7s steps(29) forwards;
-    animation: ani 0.7s steps(29) forwards;
-}
-.App .box .karobka .mas {
-    position: absolute;
-    left: 0;
-    color: #ffffff;
-    text-align: center;
-    width: 101%;
-    font-family: 'Lato', sans-serif;
-    font-size: 11px;
-    margin-top: 16px;
-    font-weight: bold;
-    overflow: hidden;
-}
-.App .box .karobka{
-    color: white;
-    width: 65%;
-    margin: 0 auto;
-    height: 730px!important;
-    display: flex;
-    border-radius: 10px;
-    overflow: hidden;
-}
-.App .box .karobka .left {
-    position: relative;
-    padding: 25px 30px 30px 30px;
-    width: 50%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-right: 1px solid white;
-}
-.App .box .karobka .left .formbox {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-.App .box .karobka .left .formbox .lavozim {
-    border-bottom: 2px solid #1B6B50;
-}
-.App .box .karobka .left .formbox .lavozim p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
-}
-.App .box .karobka .left .formbox .lavozim label {
-    margin-top: 10px !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-}
-.App .box .karobka .left .formbox .lavozim input {
-    width: 20px !important;
-    margin: 0!important;
-}
-.App .box .karobka .left .formbox label {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 15px;
-}
-.App .box .karobka .left .formbox select {
-    color: white;
-    background-color: inherit;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid #1B6B50;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 8px;
-}
-.App .box .karobka .left .formbox select:focus {
-    outline: none;
-}
-.App .box .karobka .left .formbox select option {
-    background-color: black;
-    font-size: 14px;
-}
-.App .box .karobka .left .formbox .input {
-    color: white;
-    background-color: inherit;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid #1B6B50;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 8px;
-}
-.inputred {
 
-    border-bottom: 2px solid red !important;
-}
-
-.App .box .karobka .left .formbox .input:focus {
-    outline: none;
-}
-.App .box .karobka .left .formbox .button-container-2 {
-    position: absolute;
-    bottom: 0;
-}
-.App .box .karobka .left .formbox .shartlar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-}
-.App .box .karobka .left .formbox .shartlar a{
-   color: red;
-    font-weight: 600;
-    text-shadow: 1px 1px 1px white;
-}
-.App .box .karobka .left .formbox .shartlar label{
-    margin-top: 0!important;
-    margin-right: 15px;
-}
-.App .box .karobka .righte {
-    padding: 25px 30px 30px 30px;
-    width: 50%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-.App .box .karobka .righte .boxcha {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-.App .box .karobka .righte .boxcha .title {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 120%;
-    text-align: center;
-}
-.App .box .karobka .righte .boxcha .text {
-    margin-top: 20px;
-    font-size: 16px;
-    line-height: 120%;
-    height: 85px;
-}
-.App .box .karobka .righte .boxcha label {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 32px;
-}
-.App .box .karobka .righte .boxcha .input {
-    color: white;
-    background-color: inherit;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid #1B6B50;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 8px;
-}
-.App .box .karobka .righte .boxcha .input:focus {
-    outline: none;
-}
-.App .box .karobka .righte .boxcha .zzz {
-    height: 206px !important;
-}
 .footer {
     width: 100%;
     height: 100px;
@@ -380,7 +174,6 @@ a {
     transform: translate(-50%) rotate(45deg);
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
 .footer .wrapper .icon:hover .tooltip {
     top: -45px;
     opacity: 1;
@@ -390,7 +183,6 @@ a {
 .footer .wrapper .icon:hover span, .wrapper .icon:hover .tooltip {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-
 .footer .wrapper .facebook:hover,
 .wrapper .facebook:hover .tooltip,
 .wrapper .facebook:hover .tooltip::before {
@@ -472,128 +264,17 @@ a {
 
 
 @media (max-width: 576px){
-    .App .box {
-        background-size: 180%;
-        background-position: center;
-        background-attachment: fixed;
-    }
-    .App .box .navbar {
+
+    .navbar {
         height: 50px;
         position: fixed;
         top: 0;
         z-index: 100;
     }
-    .App .box .navbar .container .navBox .title {
+    .navbar .container .navBox .title {
         font-size: 14px;
     }
-    .App .box .karobka .logoNavbar {
-        display: none;
-    }
-    .App .box .eslatma{
-        font-size: 14px;
-        margin-top: 0px;
-        position: absolute;
-        top: 60px;
-        left: 5%;
-    }
-    .App .box .karobka {
-        margin-top: 15px!important;
-        width: 90%;
-        flex-direction: column-reverse;
-        height: 970px!important;
-        border-radius: 5px;
-    }
-    .App .box .karobka .left {
-        width: 100%;
-        height: 62%;
-        padding: 10px;
-        border-right: none;
-    }
-    .App .box .karobka .left .formbox .lavozim p {
-        font-size: 12px;
-    }
-    .App .box .karobka .left .formbox .lavozim label {
-        margin-top: 10px !important;
-        font-size: 12px !important;
-    }
-    .App .box .karobka .left .formbox .lavozim input {
-        width: 10px !important;
-    }
-    .App .box .karobka .left .formbox label {
-        font-size: 12px;
-        margin-top: 15px;
-    }
-    .App .box .karobka .left .formbox select {
-        font-size: 12px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .left .formbox select option {
-        font-size: 12px;
-    }
-    .App .box .karobka .left .formbox .input {
-        font-size: 12px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .left .formbox .shartlar{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 15px;
-    }
-    .App .box .karobka .left .formbox .shartlar a{
-        font-size: 12px;
-        margin-top: 5px;
-    }
-    .App .box .karobka .button-container-2 {
-        height: 35px;
-        margin-top: 4vh;
-        border-radius: 8px;
-    }
-    .App .box .karobka .button-container-2 p {
-        font-size: 11px;
-        letter-spacing: 1px;
-        font-weight: 500;
-    }
-    .App .box .karobka .mas {
-        font-size: 11px;
-        margin-top: 8px;
-        letter-spacing: 1px;
-        font-weight: 500;
-    }
-    .App .box .karobka .righte {
-        width: 100%;
-        height: 38%;
-        padding: 10px;
-    }
-    .App .box .karobka .righte .boxcha .title {
-        font-size: 13px;
-        line-height: 120%;
-    }
-    .App .box .karobka .righte .boxcha .text {
-        margin-top: 15px;
-        font-size: 12px;
-        line-height: 130%;
-        height: 75px;
-    }
-    .App .box .karobka .righte .boxcha .video{
-        margin-top: 0 !important;
-    }
-    .App .box .karobka .righte .boxcha .tekshirish{
-        margin-top: 45px !important;
-    }
-    .App .box .karobka .righte .boxcha label {
-        font-size: 12px;
-        font-weight: bold;
-        margin-top: 20px;
-    }
-    .App .box .karobka .righte .boxcha .input {
-        font-size: 12px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .righte .boxcha .zzz {
-        height: 60px !important;
-    }
-    .App .box .footer {
+    .footer {
         margin-top: 25px;
         height: 120px;
         padding: 10px 20px;
@@ -666,129 +347,22 @@ a {
 
 }
 @media (max-width: 767px) and (min-width: 576px){
-    .App .box {
-        background-size: 130%;
-        background-position: center;
-        background-attachment: fixed;
-    }
-    .App .box .navbar {
+    .navbar {
         height: 70px;
         position: fixed;
         top: 0;
         z-index: 100;
     }
-    .App .box .navbar .container .navBox .title {
+   .navbar .container .navBox .title {
         font-size: 22px;
     }
-    .App .box .eslatma{
-        font-size: 18px;
-        margin-top: 0px;
-        position: absolute;
-        top: 80px;
-        left: 22%;
-    }
-    .App .box .karobka .logoNavbar {
-        display: none;
-    }
-    .App .box .karobka {
-        margin-top: 20px!important;
-        width: 80%;
-        flex-direction: column-reverse;
-        height: 1170px!important;
-        border-radius: 10px;
-    }
-    .App .box .karobka .left {
-        width: 100%;
-        height: 60%;
-        padding: 20px 25px 25px 25px;
-        border-right: none;
-    }
-    .App .box .karobka .left .formbox .lavozim p {
-        font-size: 14px;
-    }
-    .App .box .karobka .left .formbox .lavozim label {
-        margin-top: 10px !important;
-        font-size: 14px !important;
-    }
-    .App .box .karobka .left .formbox .lavozim input {
-        width: 10px !important;
-    }
-    .App .box .karobka .left .formbox label {
-        font-size: 14px;
-        margin-top: 15px;
-    }
-    .App .box .karobka .left .formbox select {
-        font-size: 14px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .left .formbox select option {
-        font-size: 14px;
-    }
-    .App .box .karobka .left .formbox .input {
-        font-size: 16px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .left .formbox .shartlar{
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        margin-top: 15px;
-    }
-    .App .box .karobka .button-container-2 {
-        height: 40px;
-        margin-top: 7vh;
-        border: 1px solid #1B6B50;
-        letter-spacing: 1.5px;
-        border-radius: 8px;
-    }
-    .App .box .karobka .button-container-2 p {
-        font-size: 11px;
-        letter-spacing: 1.5px;
-    }
-    .App .box .karobka .mas {
-        font-size: 11px;
-        margin-top: 11px;
-    }
-    .App .box .karobka .righte {
-        width: 100%;
-        height: 40%;
-        padding: 20px 25px;
-    }
-    .App .box .karobka .righte .boxcha .title {
-        font-size: 18px;
-        line-height: 120%;
-    }
-    .App .box .karobka .righte .boxcha .text {
-        margin-top: 15px;
-        font-size: 14px;
-        height: 75px;
-    }
-    .App .box .karobka .righte .boxcha .video{
-        margin-top: 0 !important;
-    }
-    .App .box .karobka .righte .boxcha .tekshirish{
-        margin-top: 55px !important;
-    }
-    .App .box .karobka .righte .boxcha label {
-        font-size: 14px;
-        font-weight: bold;
-        margin-top: 32px;
-    }
-    .App .box .karobka .righte .boxcha .input {
-        font-size: 14px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .righte .boxcha .zzz {
-        height: 100px !important;
-    }
-
-    .App .box .footer {
+   .footer {
         margin-top: 40px;
         height: 90px;
         padding: 10px 50px;
         position: relative;
     }
-    .App .box .footer .wrapper{
+    .footer .wrapper{
         width: 275px;
         margin: 5px auto!important;
     }
@@ -827,119 +401,14 @@ a {
     }
 }
 @media (max-width: 992px) and (min-width: 767px){
-    .App .box {
-        background-size: 130%;
-        background-position: center 350px ;
-    }
-    .App .box .navbar {
+    .navbar {
         height: 80px;
         margin-bottom: 20px!important;
     }
-    .App .box .navbar .container .navBox .title {
+    .navbar .container .navBox .title {
         font-size: 25px;
     }
-    .App .box .eslatma{
-        font-size: 20px;
-        position: absolute;
-        top: 90px;
-        left: 27%;
-        margin-top: 0!important;
-    }
-    .App .box .karobka .logoNavbar {
-        display: none;
-    }
-    .App .box .karobka {
-        width: 90%;
-        height: 730px;
-        border-radius: 10px;
-    }
-    .App .box .karobka .left {
-        padding: 20px 25px 25px 25px;
-    }
-    .App .box .karobka .left .formbox .lavozim p {
-        font-size: 16px;
-    }
-    .App .box .karobka .left .formbox .lavozim label {
-        margin-top: 10px !important;
-        font-size: 14px !important;
-    }
-    .App .box .karobka .left .formbox .lavozim input {
-        width: 20px !important;
-    }
-    .App .box .karobka .left .formbox label {
-        font-size: 16px;
-        margin-top: 15px;
-    }
-    .App .box .karobka .left .formbox select {
-        font-size: 16px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .left .formbox select option {
-        font-size: 14px;
-    }
-    .App .box .karobka .left .formbox .input {
-        font-size: 16px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .left .formbox .shartlar{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 15px;
-    }
-    .App .box .karobka .button-container-2 {
-        height: 40px;
-        margin-top: 7vh;
-        border: 1px solid #1B6B50;
-        letter-spacing: 1.5px;
-        border-radius: 8px;
-    }
-    .App .box .karobka .button-container-2 p {
-        font-size: 11px;
-        letter-spacing: 1.5px;
-    }
-    .App .box .karobka .mas {
-        font-size: 11px;
-        margin-top: 11px;
-    }
-    .App .box .karobka .righte {
-        padding: 20px 25px;
-    }
-    .App .box .karobka .righte .boxcha .title {
-        font-size: 20px;
-        line-height: 120%;
-    }
-    .App .box .karobka .righte .boxcha .text {
-        margin-top: 15px;
-        font-size: 16px;
-        height: 85px;
-    }
-    .App .box .karobka .righte .boxcha .video{
-        margin-top: 15px !important;
-    }
-    .App .box .karobka .righte .boxcha .tekshirish{
-        margin-top: 55px !important;
-    }
-    .App .box .karobka .righte .boxcha label {
-        font-size: 16px;
-        font-weight: bold;
-        margin-top: 32px;
-    }
-    .App .box .karobka .righte .boxcha .input {
-        color: white;
-        background-color: inherit;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom: 2px solid #1B6B50;
-        width: 100%;
-        font-size: 16px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .righte .boxcha .zzz {
-        height: 180px !important;
-    }
-    .App .box .footer {
+    .footer {
         margin-top: 40px;
         height: 90px;
         padding: 10px 50px;
@@ -968,119 +437,14 @@ a {
     }
 }
 @media (max-width: 1275px) and (min-width: 992px){
-    .App .box {
-        background-size: 120%;
-        background-position: center 350px ;
-    }
-    .App .box .navbar {
+    .navbar {
         height: 90px;
         margin-bottom: 35px;
     }
-    .App .box .navbar .container .navBox .title {
+    .navbar .container .navBox .title {
         font-size: 30px;
     }
-    .App .box .karobka .logoNavbar {
-        top: 170px;
-        left: 25px;
-        width: 120px;
-    }
-    .App .box .eslatma{
-        font-size: 20px;
-    }
-
-    .App .box .karobka .button-container-2 {
-        height: 40px;
-        margin-top: 7vh;
-        letter-spacing: 1.5px;
-        border-radius: 8px;
-    }
-    .App .box .karobka .button-container-2 p {
-        font-size: 11px;
-        letter-spacing: 1.5px;
-    }
-    .App .box .karobka .mas {
-        font-size: 11px;
-        margin-top: 11px;
-    }
-
-    .App .box .karobka {
-        width: 75%;
-        height: 730px;
-        border-radius: 10px;
-    }
-    .App .box .karobka .left {
-        padding: 25px 30px 30px 30px;
-    }
-    .App .box .karobka .left .formbox .lavozim p {
-        font-size: 16px;
-    }
-    .App .box .karobka .left .formbox .lavozim label {
-        margin-top: 10px !important;
-        font-size: 14px !important;
-    }
-    .App .box .karobka .left .formbox .lavozim input {
-        width: 20px !important;
-    }
-    .App .box .karobka .left .formbox label {
-        font-size: 16px;
-        margin-top: 15px;
-    }
-    .App .box .karobka .left .formbox select {
-        font-size: 16px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .left .formbox select option {
-        font-size: 14px;
-    }
-    .App .box .karobka .left .formbox .input {
-        font-size: 16px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .left .formbox .shartlar{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 15px;
-    }
-
-    .App .box .karobka .righte {
-        padding: 25px 30px;
-    }
-    .App .box .karobka .righte .boxcha .title {
-        font-size: 20px;
-        line-height: 120%;
-    }
-    .App .box .karobka .righte .boxcha .text {
-        margin-top: 15px;
-        font-size: 16px;
-        height: 85px;
-    }
-    .App .box .karobka .righte .boxcha .video{
-        margin-top: 15px !important;
-    }
-    .App .box .karobka .righte .boxcha .tekshirish{
-        margin-top: 55px !important;
-    }
-    .App .box .karobka .righte .boxcha label {
-        font-size: 16px;
-        font-weight: bold;
-        margin-top: 32px;
-    }
-    .App .box .karobka .righte .boxcha .input {
-        color: white;
-        background-color: inherit;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom: 2px solid #1B6B50;
-        width: 100%;
-        font-size: 16px;
-        margin-top: 8px;
-    }
-    .App .box .karobka .righte .boxcha .zzz {
-        height: 180px !important;
-    }
-    .App .box .footer {
+   .footer {
         margin-top: 40px;
         height: 90px;
         padding: 10px 50px;

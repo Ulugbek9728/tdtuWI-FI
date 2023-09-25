@@ -4,7 +4,6 @@ import "./SignIn.scss"
 import {useNavigate} from "react-router";
 import {toast, ToastContainer} from "react-toastify";
 import {Link} from "react-router-dom";
-import {Admin} from "./action";
 import {useDispatch} from "react-redux";
 import {ApiUrl} from "./domenName";
 import Navbar from "./navbar";

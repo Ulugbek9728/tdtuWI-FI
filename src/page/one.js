@@ -21,9 +21,9 @@ function One(props) {
                             Talaba
                         </button>
                     </Link>
-                    <Link to={'/employee'} onClick={()=>localStorage.setItem("user", "Employee")}>
+                    <a href={'https://t.me/tdtu_rttm_bot'} target='_blank'>
                         <button type="submit" className="form-control my-4">Xodim</button>
-                    </Link>
+                    </a>
 
 
                 </div>
