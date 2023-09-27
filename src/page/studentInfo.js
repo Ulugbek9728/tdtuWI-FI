@@ -7,25 +7,74 @@ import "aos/dist/aos.css";
 import "../asset/studentInfo.scss"
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {ApiUrl1} from "../componenta/apiHemis";
+import axios from "axios";
+import {useNavigate} from "react-router";
+
 
 function StudentInfo(props) {
+    const navigate = useNavigate();
     const dispatch = useDispatch()
+
     const fulInfo = useSelector(state => state.fulInfo)
-    console.log(fulInfo)
-    const [tel, setTel] = useState( '+998');
-    const [info, setInfo] = useState(true);
+    const [tel, setTel] = useState('+998');
+    const [Student, setStudent] = useState({});
+    const [data, setdata] = useState('');
+    const onFinish = (values: any) => {
+        dispatch({
+            type: 'USER_FULL_INFO', payload: [
+                {
+                    type: "STUDENT",
+                    student: {
+                        fullName: Student.fullName,
+                        group: Student.group,
+                        login: Student.login,
+                        phone: '+998' + tel
+                    },
+                    data: data
 
-    const onChange = (e) => {
+                }
+            ]
+        })
+        navigate("/shartlar")
 
-        dispatch({type: 'USER_FULL_INFO', payload: {tel: '+998'+tel}})
-        setInfo(e)
     };
+
     useEffect(() => {
         AOS.init();
-    }, [info])
-    useEffect(()=>{
-        setTel(fulInfo?.tel?.slice(4,fulInfo?.tel.length));
-    },[fulInfo])
+        getStudent()
+    }, [])
+
+    useEffect(() => {
+        if (fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length)==='undefined'){
+            setTel('')
+        }
+        else {
+            setTel(fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length));
+        }
+    }, [fulInfo])
+
+    function getStudent() {
+        axios.get(`${ApiUrl1}account/me`, {
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")}
+        }).then((response) => {
+            setStudent({
+                ...Student,
+                fullName: response.data.data.full_name,
+                login: response.data.data.student_id_number,
+                imageUrl: response.data.data.image,
+                specialty: response.data.data.specialty.name,
+                group: response.data.data.group.name,
+                faculty: response.data.data.faculty.name,
+                course: response.data.data.level.name,
+            })
+            setdata(JSON.stringify(response.data.data))
+        }).catch((error) => {
+            console.log(error);
+        })
+
+    }
+
     return (
         <div className='studentInfoBox'>
             <Navbar/>
@@ -35,29 +84,33 @@ function StudentInfo(props) {
 
             <div data-aos="flip-left" className="studentInfo">
                 <div className="d-flex align-items-center mb-3">
-                    <i className='fa-solid fa-user-tie'/>
+                    {Student.imageUrl ? <img src={Student.imageUrl} alt=""/> :
+                        <i className='fa-solid fa-user-tie'/>
+                    }
+
+
                     <div>
                         <div className='Label'>FISH</div>
-                        <div className='value'>AZIZJONOV ABDULAZIZ UMARJON O‘G‘LI</div>
+                        <div className='value'>{Student.name}</div>
                         <hr/>
                         <div className='Label'>Guruh</div>
-                        <div className='value'>157-22 EA (pri) (o‘z)</div>
+                        <div className='value'>{Student.group}</div>
                     </div>
                 </div>
                 <div className='Label'>Fakultet</div>
-                <div className='value'>Elektronika va avtomatika fakulteti</div>
+                <div className='value'>{Student.faculty}</div>
                 <hr/>
                 <div className='Label'>Yo'nalish</div>
-                <div className='value'>Elektronika va asbobsozlik (priborsozlik)</div>
+                <div className='value'>{Student.specialty}</div>
                 <hr/>
                 <div className='Label'>Kurs</div>
-                <div className='value'>2-kurs</div>
+                <div className='value'>{Student.course}</div>
                 <hr/>
                 <p className='Label'>Wi-Fi dan foydalanishga Login, Parol olish uchun telefon raqamni kiriting.
                     Ma'lumotlaringiz tasdiqlansa kiritgan telefon raqamingizga Login Parol ni sms tariqa yuboramiz.
                 </p>
 
-                <Form name="wrap" wrapperCol={{flex: 1,}} colon={false}
+                <Form name="wrap" wrapperCol={{flex: 1,}} colon={false} onFinish={onFinish}
                       fields={[
                           {
                               name: 'Tel',
@@ -85,12 +138,12 @@ function StudentInfo(props) {
                             }
                         ]}
                     >
-                        <Input  value={fulInfo.tel} addonBefore="+998" showCount maxLength={9}
+                        <Input value={fulInfo?.student?.phone} addonBefore="+998" showCount maxLength={9}
                                onChange={(e) => setTel(`${e.target.value}`)}/>
                     </Form.Item>
 
                     <Form.Item className='button'>
-                        <Button htmlType="submit" onClick={() => onChange(false)}
+                        <Button htmlType="submit"
                                 className='btn btn-success mt-4'>Keyingisi</Button>
                     </Form.Item>
                 </Form>

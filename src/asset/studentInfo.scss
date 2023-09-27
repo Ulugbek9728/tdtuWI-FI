@@ -29,6 +29,11 @@
     margin-right: 15px;
     color: #1B6B50;
   }
+  img{
+    width: 160px;
+    border: 1px solid #1B6B50;
+    margin-right: 15px;
+  }
   .Label{
     font-weight: 600;
     font-size: 16px;
@@ -42,4 +47,12 @@
     }
   }
 
+}
+
+.aferta{
+  margin: 2% auto;
+  width: 52%;
+  min-height: 71vh;
+  background-color: white;
+  padding: 25px;
 }
