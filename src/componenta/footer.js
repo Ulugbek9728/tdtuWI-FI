@@ -46,15 +46,10 @@ function Footer(props) {
 
                 </ul>
             </div>
-            <div className="center">
-                <Link to={"/SignInAdmin"}>
-                    <p>
-                        RTTM-2023
-                    </p>
-                </Link>
-            </div>
             <div className="righte">
-
+                <p>
+                    RTTM-2023
+                </p>
             </div>
 
         </div>

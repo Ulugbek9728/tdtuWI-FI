@@ -19,8 +19,8 @@ function App(props) {
             <Routes>
                 <Route path={"/"} element={<One/>}/>
                 <Route path={"/student"} element={<SignIn/>}/>
-                <Route path={"/shartlar"} element={<Aferta/>}/>
                 <Route path={"/studentInfo"} element={<StudentInfo/>}/>
+                <Route path={"/shartlar"} element={<Aferta/>}/>
             </Routes>
         </div>
     );

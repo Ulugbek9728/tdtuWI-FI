@@ -1,15 +1,65 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import AOS from "aos";
 import Navbar from "../componenta/navbar";
 import {Link} from "react-router-dom";
 import Footer from "../componenta/footer";
+import {useSelector} from "react-redux";
+import {useNavigate} from "react-router";
+import {ApiUrl} from "../componenta/domenName";
+import {Checkbox, Form, Button} from 'antd';
+import {toast} from "react-toastify";
+
+
+import axios from "axios";
 
 function Aferta(props) {
+    const navigate = useNavigate();
+
+    const fulInfo = useSelector(state => state.fulInfo)
+    const [message, setMessage] = useState('');
+    const [sucsessText, setSucsessText] = useState('');
+
 
     useEffect(() => {
         AOS.init();
-
+        if (fulInfo[0].student.phone===''){
+            navigate("/studentInfo")
+        }
+        window.scroll(0, 0)
     }, [])
+
+    const onFinish = (values) => {
+        console.log('Success:', values);
+        if (values.remember === true){
+            axios.post(`${ApiUrl}/api/application/submit` , fulInfo[0] , {
+                headers: {"Content-Type": "application/json"}
+
+            }).then((res)=>{
+                console.log(res.data)
+                if (res.data?.isSuccess ===true){
+                    setSucsessText("Ma'lumotlaringiz yuborildi")
+                }
+                else {setMessage(res.data?.message)}
+            }).catch((error)=>{
+                console.log(error)
+            })
+        }
+        else {}
+    };
+    useEffect(() => {
+        setMessage('')
+        setSucsessText('')
+        notify();
+    }, [message, sucsessText,]);
+
+    function notify() {
+        if (sucsessText !== '') {
+            toast.success(sucsessText)
+        }
+        if (message !== '') {
+            toast.error(message)
+        }
+    }
     return (
         <div className='studentInfoBox'>
             <Navbar/>
@@ -18,22 +68,56 @@ function Aferta(props) {
             </Link>
 
             <div data-aos="flip-left" className="aferta">
-                <h4 className='text-center'>Aferta</h4>
-                <p className=''>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet beatae cupiditate, dolor eaque odio
-                    officiis qui quidem ratione recusandae unde! Aliquam aliquid asperiores consequatur delectus, dolor
-                    esse id ipsum laboriosam nam nisi, numquam obcaecati porro quasi quis quod recusandae repellat sed
-                    soluta voluptate voluptatem? Ab ducimus eius labore numquam ratione repudiandae sint tempore vel?
-                    Dolorum, recusandae, voluptatibus. Aliquid assumenda enim eum perferendis! Accusantium atque, aut
-                    consequatur delectus dolorem dolorum ea earum eos error esse et ex exercitationem facere fugit, id
-                    impedit ipsam iste labore laborum magnam modi nesciunt nisi omnis pariatur possimus quam quod quos
-                    ratione saepe totam ullam unde vitae voluptatem? Accusamus adipisci aperiam asperiores aspernatur
-                    blanditiis consequatur consequuntur debitis dolorem doloremque eaque, eius eos eum eveniet, fugiat
-                    in iure laudantium nam non quaerat quos soluta, tempore veritatis voluptatum! Ad aut beatae, debitis
-                    excepturi expedita, facere illo, ipsa odit optio sit tempora velit vitae! Asperiores corporis
-                    debitis, eos est ex incidunt itaque laboriosam modi neque nesciunt nobis officia omnis placeat
-                    repudiandae, saepe sed suscipit! A accusamus aspernatur atque commodi, dolorem dolores dolorum,
-                    enim, eveniet illum ipsum iusto magni minus nemo obcaecati sint soluta tempora. Ab doloremque facere
-                    modi perspiciatis quaerat qui sed totam ut voluptatum! Culpa doloremque porro rem!</p>
+                <h4 className='text-center'>Universitet hududida Wi-Fi tarmog'idan foydalanish shartlari</h4>
+                <p className=''>
+                    Universitet internet tarmogʼidan foydalanilgan barcha internet resurslari murojaat
+                    qilingan saytlar, koʼchirib olinayotgan maʼlumotlar Universitet serverida monitoring qilib boriladi.
+                    Shu boisdan foydalanuvchi oʼziga berilgan <b>Login</b> - <b>Parol</b>dan faqatgina oʼzi foydalanishi lozim.
+                    <i className='text-danger'>(foydalanuvshi oziga biriktirilgan login parol orqali kirilgan saytlarga javobgar!)</i>
+                </p>
+                <p>
+                    Universitet internet tarmogʼidan faqat ilmiy ishlar olib borishda, ilmiy bilim va koʼnikmalarni
+                    yanada mustahkamlash hamda lavozimga oid faoliyat maqsadlarida foydalanish zarur.
+                </p>
+                <p>
+                    Universitet internet tarmogʼidan turli xil Oʼzbekiston Respublikasi siyosatiga, urf-odatiga va ahloq
+                    normalariga zid boʼlgan saytlardan Oʼzbekiston Respublikasi qonunchiligiga zid boʼlgan, hududiy
+                    yaxlitligini zoʼrlik bilan oʼzgartirishga daʼvat etishga, urush, zoʼravonlik, terrorizm, shuningdek
+                    diniy ekstremizm, separatizm va fundamentalizm gʼoyalarini targʼib qilishga, milliy, irqiy, etnik
+                    yoki diniy adovat qoʼzgʼatuvchi axborotni, pornografik xususiyatga ega boʼlgan barcha saytlardan, turli-hil
+                    ijtimoiy tarmoqlardan, turli hil koʼngil ochar saytlardan,
+                    taʼlim jarayoniga oid boʼlmagan audio va video fayllarni koʼchirish, taʼlim va ish jarayoni
+                    taluqli boʼlmagan saytlar hamda VPN dasturlaridan foydalanish katʼiyan <b className='text-danger'>MАN ETILАDI</b> .
+                </p>
+                <div className='button mt-5'>
+                    <Form className='d-flex justify-content-between w-100'
+                        name="basic"
+                        labelCol={{span: 8,}}
+                        wrapperCol={{span: 16,}}
+                        initialValues={{remember: true,}}
+                        onFinish={onFinish}
+                        autoComplete="off">
+                        <Form.Item className='w-100'
+                            name="remember" valuePropName="checked"
+                            wrapperCol={{offset: 0, span: 16,}}>
+                            <Checkbox className='w-100'>Internetdan foydalanish talablariga roziman</Checkbox>
+                        </Form.Item>
+
+                        <Form.Item
+                            wrapperCol={{
+                                offset: 0,
+                                span: 56,
+                            }}
+                        >
+                            <Button type="success" htmlType="submit" className='btn btn-success'>
+                                Yuborish
+                            </Button>
+                        </Form.Item>
+                    </Form>
+
+                </div>
+
+
 
             </div>
             <Footer/>

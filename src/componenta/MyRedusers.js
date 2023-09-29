@@ -1,5 +1,12 @@
 const MyInistialState = {
-    fulInfo: [{test:'123456'}]
+    fulInfo: [{ type: "STUDENT",
+        student: {
+            fullName: '',
+            group: '',
+            login: '',
+            phone:''
+        },
+        data: ''}]
 };
 
 export const MyRedusers = (state = MyInistialState, action) => {

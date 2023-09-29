@@ -43,6 +43,7 @@ function StudentInfo(props) {
     useEffect(() => {
         AOS.init();
         getStudent()
+        window.scroll(0, 0)
     }, [])
 
     useEffect(() => {
@@ -87,11 +88,9 @@ function StudentInfo(props) {
                     {Student.imageUrl ? <img src={Student.imageUrl} alt=""/> :
                         <i className='fa-solid fa-user-tie'/>
                     }
-
-
                     <div>
                         <div className='Label'>FISH</div>
-                        <div className='value'>{Student.name}</div>
+                        <div className='value'>{Student.fullName}</div>
                         <hr/>
                         <div className='Label'>Guruh</div>
                         <div className='value'>{Student.group}</div>
