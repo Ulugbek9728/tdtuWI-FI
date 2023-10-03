@@ -63,9 +63,6 @@ function Aferta(props) {
     return (
         <div className='studentInfoBox'>
             <Navbar/>
-            <Link to="/studentInfo" className='ortga'>
-                <i className="fa-solid fa-angles-left mx-1"/> Ortga
-            </Link>
 
             <div data-aos="flip-left" className="aferta">
                 <h4 className='text-center'>Universitet hududida Wi-Fi tarmog'idan foydalanish shartlari</h4>
@@ -90,7 +87,7 @@ function Aferta(props) {
                     taluqli boʼlmagan saytlar hamda VPN dasturlaridan foydalanish katʼiyan <b className='text-danger'>MАN ETILАDI</b> .
                 </p>
                 <div className='button mt-5'>
-                    <Form className='d-flex justify-content-between w-100'
+                    <Form
                         name="basic"
                         labelCol={{span: 8,}}
                         wrapperCol={{span: 16,}}
@@ -99,17 +96,24 @@ function Aferta(props) {
                         autoComplete="off">
                         <Form.Item className='w-100'
                             name="remember" valuePropName="checked"
-                            wrapperCol={{offset: 0, span: 16,}}>
+                                   rules={[
+                                       {
+                                           validator: (_, value) =>
+                                               value ? Promise.resolve() : Promise.reject(new Error('Internetdan foydalanish talablariga rozilik bering!!!')),
+                                       },
+                                   ]}>
                             <Checkbox className='w-100'>Internetdan foydalanish talablariga roziman</Checkbox>
                         </Form.Item>
 
                         <Form.Item
                             wrapperCol={{
                                 offset: 0,
-                                span: 56,
-                            }}
-                        >
-                            <Button type="success" htmlType="submit" className='btn btn-success'>
+                                span: 56,}}
+                            className='button d-flex justify-content-between' >
+                            <Button className='btn btn-success mt-4' onClick={()=>navigate('/studentInfo')}>
+                                <i className="fa-solid fa-angles-left mx-1"/> Ortga
+                            </Button>
+                            <Button type="success" htmlType="submit" className='btn btn-success mt-4'>
                                 Yuborish
                             </Button>
                         </Form.Item>

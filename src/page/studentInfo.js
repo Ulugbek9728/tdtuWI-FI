@@ -47,10 +47,9 @@ function StudentInfo(props) {
     }, [])
 
     useEffect(() => {
-        if (fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length)==='undefined'){
+        if (fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length) === 'undefined') {
             setTel('')
-        }
-        else {
+        } else {
             setTel(fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length));
         }
     }, [fulInfo])
@@ -79,9 +78,7 @@ function StudentInfo(props) {
     return (
         <div className='studentInfoBox'>
             <Navbar/>
-            <Link to="/student" className='ortga'>
-                <i className="fa-solid fa-angles-left mx-1"/> Ortga
-            </Link>
+
 
             <div data-aos="flip-left" className="studentInfo">
                 <div className="d-flex align-items-center mb-3">
@@ -141,10 +138,17 @@ function StudentInfo(props) {
                                onChange={(e) => setTel(`${e.target.value}`)}/>
                     </Form.Item>
 
-                    <Form.Item className='button'>
-                        <Button htmlType="submit"
-                                className='btn btn-success mt-4'>Keyingisi</Button>
+
+                    <Form.Item className='button d-flex justify-content-between'>
+                        <Button className='btn btn-success mt-4' onClick={()=>navigate('/student')}>
+                            <i className="fa-solid fa-angles-left mx-1"/> Ortga
+                        </Button>
+                        <Button htmlType="submit" className='btn btn-success mt-4'>
+                            Keyingisi <i className="fa-solid fa-angles-right mx-1"/>
+                        </Button>
                     </Form.Item>
+
+
                 </Form>
             </div>
             <Footer/>

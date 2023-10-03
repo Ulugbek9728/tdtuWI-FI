@@ -1,4 +1,4 @@
-// const ApiUrl = 'http://api.test.tdtu.uz';
-const ApiUrl = 'https://wifi.jprq.live';
+const ApiUrl = 'https://api-wifi.tdtu.uz';
+
 
 export {ApiUrl}
