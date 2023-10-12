@@ -1,33 +1,61 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../componenta/navbar";
+import {Button, Form, Input} from "antd";
 import Footer from "../componenta/footer";
-import {Input, Form, Button} from 'antd';
-import AOS from "aos";
-import "aos/dist/aos.css";
-import "../asset/studentInfo.scss"
 import {useDispatch, useSelector} from "react-redux";
-import {ApiUrl1} from "../componenta/apiHemis";
-import axios from "axios";
 import {useNavigate} from "react-router";
+import "../asset/studentInfo.scss"
+import AOS from "aos";
+import {useSearchParams} from 'react-router-dom';
+import axios from "axios";
+import {ApiUrl} from "../componenta/domenName";
 
 
-function StudentInfo(props) {
+function Employee(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
 
+    const [Employee, setEmployee] = useState({});
+    const [data, setdata] = useState(null);
+
+    const [searchParams] = useSearchParams();
     const fulInfo = useSelector(state => state.fulInfo)
     const [tel, setTel] = useState('+998');
-    const [Student, setStudent] = useState({});
-    const [data, setdata] = useState('');
+
+    useEffect(() => {
+
+        AOS.init();
+        window.scroll(0, 0)
+        if (fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length) === 'undefined') {
+            setTel('')
+        } else {
+            setTel(fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length));
+        }
+        getEmploee()
+
+    }, [])
+
+    useEffect(() => {
+        if (!fulInfo[0]?.student.fullName) {
+
+        } else {
+            setEmployee(fulInfo[0].student);
+        }
+    }, [])
+
     const onFinish = (values: any) => {
         dispatch({
             type: 'USER_FULL_INFO', payload: [
                 {
                     type: "STUDENT",
                     student: {
-                        fullName: Student.fullName,
-                        group: Student.group,
-                        login: Student.login,
+                        fullName: Employee.fullName,
+                        imageUrl: Employee.imageUrl,
+                        login: Employee.login,
+                        department: JSON.stringify(Employee.department),
+                        departmentId: Employee?.department?.id,
+                        staffPosition: JSON.stringify(Employee?.staffPosition),
+                        staffPositionId: Employee?.staffPosition?.code,
                         phone: '+998' + tel
                     },
                     data: data
@@ -35,44 +63,35 @@ function StudentInfo(props) {
                 }
             ]
         })
-        navigate("/shartlar")
 
+        navigate("/shartlaremployee")
     };
 
-    useEffect(() => {
-        AOS.init();
-        getStudent()
-        window.scroll(0, 0)
-    }, [])
-
-    useEffect(() => {
-        if (fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length) === 'undefined') {
-            setTel('')
-        } else {
-            setTel(fulInfo[0]?.student?.phone?.slice(4, fulInfo?.student?.phone.length));
-        }
-    }, [fulInfo])
-
-    function getStudent() {
-        axios.get(`${ApiUrl1}account/me`, {
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")}
+    function getEmploee() {
+        axios.get(`${ApiUrl}/api/v1/hemis-oauth`, {
+            params: {
+                code: searchParams.get('code'),
+                state: searchParams.get('state')
+            }
         }).then((response) => {
-            setStudent({
-                ...Student,
-                fullName: response.data.data.full_name,
-                login: response.data.data.student_id_number,
-                imageUrl: response.data.data.image,
-                specialty: response.data.data.specialty.name,
-                group: response.data.data.group.name,
-                faculty: response.data.data.faculty.name,
-                course: response.data.data.level.name,
-            })
-            setdata(JSON.stringify(response.data.data))
+            if (response.data.isSuccess === true) {
+                setEmployee({
+                    ...Employee,
+                    fullName: response.data?.data?.fullName,
+                    login: response.data?.data?.employeeIdNumber,
+                    imageUrl: response.data?.data?.image,
+                    department: response.data?.data?.department,
+                    staffPosition:response.data?.data?.staffPosition,
+                })
+            }
+            console.log(response)
         }).catch((error) => {
             console.log(error);
         })
-
     }
+
+    console.log(fulInfo)
+    console.log(tel)
 
     return (
         <div className='studentInfoBox'>
@@ -80,38 +99,32 @@ function StudentInfo(props) {
 
             <div data-aos="flip-left" className="studentInfo">
                 <div className="d-flex align-items-center mb-3">
-                    {Student.imageUrl ? <img src={Student.imageUrl} alt=""/> :
-                        <i className='fa-solid fa-user-tie'/>
-                    }
+                    {Employee.imageUrl ? <img src={Employee.imageUrl} alt=""/> :
+                        <i className='fa-solid fa-user-tie'/>}
                     <div>
                         <div className='Label'>FISH</div>
-                        <div className='value'>{Student.fullName}</div>
+                        <div className='value'>
+                            {Employee.fullName}
+                        </div>
                         <hr/>
-                        <div className='Label'>Guruh</div>
-                        <div className='value'>{Student.group}</div>
                     </div>
                 </div>
-                <div className='Label'>Fakultet</div>
-                <div className='value'>{Student.faculty}</div>
-                <hr/>
-                <div className='Label'>Yo'nalish</div>
-                <div className='value'>{Student.specialty}</div>
-                <hr/>
-                <div className='Label'>Kurs</div>
-                <div className='value'>{Student.course}</div>
+                <div className='Label'>Lavozim</div>
+                <div className='value'>
+                    {Employee?.staffPosition?.name}
+                    {}
+                </div>
                 <hr/>
                 <p className='Label'>Wi-Fi dan foydalanishga Login, Parol olish uchun telefon raqamni kiriting.
                     Ma'lumotlaringiz tasdiqlansa kiritgan telefon raqamingizga Login Parol ni sms tariqa yuboramiz.
                 </p>
 
+
                 <Form name="wrap" wrapperCol={{flex: 1,}} colon={false} onFinish={onFinish}
-                      fields={[
-                          {
-                              name: 'Tel',
-                              value: tel,
-                          }
-                      ]}
-                >
+                      fields={[{
+                          name: 'Tel',
+                          value: tel,
+                      }]}>
                     <Form.Item
                         name="Tel"
                         rules={[
@@ -138,7 +151,7 @@ function StudentInfo(props) {
 
 
                     <Form.Item className='button d-flex justify-content-between'>
-                        <Button className='btn btn-success mt-4' onClick={()=>navigate('/student')}>
+                        <Button className='btn btn-success mt-4' onClick={() => navigate('/')}>
                             <i className="fa-solid fa-angles-left mx-1"/> Ortga
                         </Button>
                         <Button htmlType="submit" className='btn btn-success mt-4'>
@@ -154,4 +167,4 @@ function StudentInfo(props) {
     );
 }
 
-export default StudentInfo;
+export default Employee;

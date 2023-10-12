@@ -8,6 +8,7 @@ import {ApiUrl1} from "./apiHemis";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import {Button, Form, Input} from 'antd';
+import AOS from "aos";
 
 
 
@@ -61,14 +62,21 @@ function SignIn(props) {
             toast.error(message)
         }
     }
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        window.scroll(0, 0)
+    }, [])
 
     return (<>
             <Navbar/>
-        <div className="SignIn">
+        <div  className="SignIn">
             <Link to={"/"} className="ortga"><i
                 className="fa-solid fa-angles-left mx-1"/> Ortga
             </Link>
-            <div className="Signbox">
+            <div data-aos="zoom-in" className="Signbox">
 
                 <img className="Logo" src="./img/LOGO_TDTU_(2).png " alt=""/>
                 <h3>WI FI dan foydalanish uchun ariza topshirish</h3>
