@@ -9,11 +9,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {ApiUrl1} from "../componenta/apiHemis";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import Loading from "../componenta/loading";
+
 
 
 function StudentInfo(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
+
+    const [loading, setLoading] = useState(false);
 
     const fulInfo = useSelector(state => state.fulInfo)
     const [tel, setTel] = useState('+998');
@@ -54,9 +58,11 @@ function StudentInfo(props) {
     }, [fulInfo])
 
     function getStudent() {
+        setLoading(true)
         axios.get(`${ApiUrl1}account/me`, {
             headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")}
         }).then((response) => {
+            setLoading(false)
             setStudent({
                 ...Student,
                 fullName: response.data.data.full_name,
@@ -70,6 +76,8 @@ function StudentInfo(props) {
             setdata(JSON.stringify(response.data.data))
         }).catch((error) => {
             console.log(error);
+            setLoading(false)
+
         })
 
     }
@@ -77,78 +85,81 @@ function StudentInfo(props) {
     return (
         <div className='studentInfoBox'>
             <Navbar/>
-
-            <div data-aos="flip-left" className="studentInfo">
-                <div className="d-flex align-items-center mb-3">
-                    {Student.imageUrl ? <img src={Student.imageUrl} alt=""/> :
-                        <i className='fa-solid fa-user-tie'/>
-                    }
-                    <div>
-                        <div className='Label'>FISH</div>
-                        <div className='value'>{Student.fullName}</div>
-                        <hr/>
-                        <div className='Label'>Guruh</div>
-                        <div className='value'>{Student.group}</div>
+            {loading ?
+                <Loading/>
+                :
+                <div data-aos="flip-left" className="studentInfo">
+                    <div className="d-flex align-items-center mb-3">
+                        {Student.imageUrl ? <img src={Student.imageUrl} alt=""/> :
+                            <i className='fa-solid fa-user-tie'/>
+                        }
+                        <div>
+                            <div className='Label'>FISH</div>
+                            <div className='value'>{Student.fullName}</div>
+                            <hr/>
+                            <div className='Label'>Guruh</div>
+                            <div className='value'>{Student.group}</div>
+                        </div>
                     </div>
-                </div>
-                <div className='Label'>Fakultet</div>
-                <div className='value'>{Student.faculty}</div>
-                <hr/>
-                <div className='Label'>Yo'nalish</div>
-                <div className='value'>{Student.specialty}</div>
-                <hr/>
-                <div className='Label'>Kurs</div>
-                <div className='value'>{Student.course}</div>
-                <hr/>
-                <p className='Label'>Wi-Fi dan foydalanishga Login, Parol olish uchun telefon raqamni kiriting.
-                    Ma'lumotlaringiz tasdiqlansa kiritgan telefon raqamingizga Login Parol ni sms tariqa yuboramiz.
-                </p>
+                    <div className='Label'>Fakultet</div>
+                    <div className='value'>{Student.faculty}</div>
+                    <hr/>
+                    <div className='Label'>Yo'nalish</div>
+                    <div className='value'>{Student.specialty}</div>
+                    <hr/>
+                    <div className='Label'>Kurs</div>
+                    <div className='value'>{Student.course}</div>
+                    <hr/>
+                    <p className='Label'>Wi-Fi dan foydalanishga Login, Parol olish uchun telefon raqamni kiriting.
+                        Ma'lumotlaringiz tasdiqlansa kiritgan telefon raqamingizga Login Parol ni sms tariqa yuboramiz.
+                    </p>
 
-                <Form name="wrap" wrapperCol={{flex: 1,}} colon={false} onFinish={onFinish}
-                      fields={[
-                          {
-                              name: 'Tel',
-                              value: tel,
-                          }
-                      ]}
-                >
-                    <Form.Item
-                        name="Tel"
-                        rules={[
-                            {
-
-                                required: true,
-                                message: 'Telefon raqamingizni kiriting',
-                            },
-
-                            {
-                                pattern: new RegExp(/^[0-9]+$/),
-                                message: 'Faqat raqam kiritilishi kerak'
-                            },
-                            {
-                                max: 9,
-                                min: 9,
-                                message: "Telefon raqam noto'g'ri kiritildi"
-                            }
-                        ]}
+                    <Form name="wrap" wrapperCol={{flex: 1,}} colon={false} onFinish={onFinish}
+                          fields={[
+                              {
+                                  name: 'Tel',
+                                  value: tel,
+                              }
+                          ]}
                     >
-                        <Input value={fulInfo?.student?.phone} addonBefore="+998" showCount maxLength={9}
-                               onChange={(e) => setTel(`${e.target.value}`)}/>
-                    </Form.Item>
+                        <Form.Item
+                            name="Tel"
+                            rules={[
+                                {
+
+                                    required: true,
+                                    message: 'Telefon raqamingizni kiriting',
+                                },
+
+                                {
+                                    pattern: new RegExp(/^[0-9]+$/),
+                                    message: 'Faqat raqam kiritilishi kerak'
+                                },
+                                {
+                                    max: 9,
+                                    min: 9,
+                                    message: "Telefon raqam noto'g'ri kiritildi"
+                                }
+                            ]}
+                        >
+                            <Input value={fulInfo?.student?.phone} addonBefore="+998" showCount maxLength={9}
+                                   onChange={(e) => setTel(`${e.target.value}`)}/>
+                        </Form.Item>
 
 
-                    <Form.Item className='button d-flex justify-content-between'>
-                        <Button className='btn btn-success mt-4' onClick={()=>navigate('/student')}>
-                            <i className="fa-solid fa-angles-left mx-1"/> Ortga
-                        </Button>
-                        <Button htmlType="submit" className='btn btn-success mt-4'>
-                            Keyingisi <i className="fa-solid fa-angles-right mx-1"/>
-                        </Button>
-                    </Form.Item>
+                        <Form.Item className='button d-flex justify-content-between'>
+                            <Button className='btn btn-success mt-4' onClick={()=>navigate('/student')}>
+                                <i className="fa-solid fa-angles-left mx-1"/> Ortga
+                            </Button>
+                            <Button htmlType="submit" className='btn btn-success mt-4'>
+                                Keyingisi <i className="fa-solid fa-angles-right mx-1"/>
+                            </Button>
+                        </Form.Item>
 
 
-                </Form>
-            </div>
+                    </Form>
+                </div>
+            }
             <Footer/>
         </div>
     );

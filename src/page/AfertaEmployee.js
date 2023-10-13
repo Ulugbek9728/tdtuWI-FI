@@ -22,14 +22,12 @@ function AfertaEmployee(props) {
 
     useEffect(() => {
         AOS.init();
-        if (fulInfo[0].student.phone===''){
-            navigate("/studentInfo")
+
+        if (fulInfo[0]?.employee?.phone===''){
+            navigate("/employee")
         }
         window.scroll(0, 0)
     }, [])
-
-    console.log(fulInfo[0])
-
     const onFinish = (values) => {
         console.log('Success:', values);
         if (values.remember === true){
@@ -40,6 +38,7 @@ function AfertaEmployee(props) {
                 console.log(res.data)
                 if (res.data?.isSuccess ===true){
                     setSucsessText("Ma'lumotlaringiz yuborildi")
+                    navigate('/')
                 }
                 else {setMessage(res.data?.message)}
             }).catch((error)=>{
@@ -48,6 +47,7 @@ function AfertaEmployee(props) {
         }
         else {}
     };
+    console.log(fulInfo)
     useEffect(() => {
         setMessage('')
         setSucsessText('')

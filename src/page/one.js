@@ -7,7 +7,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 
-
 function One(props) {
     useEffect(() => {
         AOS.init({
@@ -27,12 +26,13 @@ function One(props) {
 
                     <Link to={'/student'} onClick={() => localStorage.setItem("user", "Student")}>
                         <button type="submit" className="form-control">
-                            Talabalar
+                            Talabalar (Hemis login parol orqali)
                         </button>
                     </Link>
-                    <a href={'https://hemis.tdtu.uz/oauth/authorize?response_type=code&client_id=3&state=TmuYvLHX1YKkJ5enM89k3g2dp2MWjDwUMiBt7DiQ0YI%3D&redirect_uri=http://localhost:1010/hemis-login'} target='_blank'>
+                    <a href={'https://hemis.tdtu.uz/oauth/authorize?response_type=code&client_id=3&state=TmuYvLHX1YKkJ5enM89k3g2dp2MWjDwUMiBt7DiQ0YI%3D&redirect_uri=https://wifi.tdtu.uz/employee'}
+                       target='_blank'>
                         <button type="submit" className="form-control my-4">
-                            Hodimlar
+                            Hodimlar (Hemis login parol orqali)
                         </button>
                     </a>
                     <a href={'https://t.me/tdtu_rttm_bot'} target='_blank'>

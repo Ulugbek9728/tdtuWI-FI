@@ -1,5 +1,6 @@
 const MyInistialState = {
-    fulInfo: [{ type: "STUDENT",
+    fulInfo: [
+        { type: "STUDENT",
         student: {
             fullName: '',
             group: '',

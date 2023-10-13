@@ -38,6 +38,7 @@ function Aferta(props) {
                 console.log(res.data)
                 if (res.data?.isSuccess ===true){
                     setSucsessText("Ma'lumotlaringiz yuborildi")
+                    navigate('/')
                 }
                 else {setMessage(res.data?.message)}
             }).catch((error)=>{
