@@ -76,7 +76,6 @@ function Employee(props) {
             }
         }).then((response) => {
             setLoading(false)
-
             if (response.data.isSuccess === true) {
                 setEmployee({
                     ...Employee,
@@ -91,6 +90,7 @@ function Employee(props) {
         }).catch((error) => {
             console.log(error);
             setLoading(false)
+            navigate('/')
         })
     }
 

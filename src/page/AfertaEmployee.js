@@ -9,8 +9,8 @@ import {ApiUrl} from "../componenta/domenName";
 import {Checkbox, Form, Button} from 'antd';
 import {toast} from "react-toastify";
 
-
 import axios from "axios";
+import Loading from "../componenta/loading";
 
 function AfertaEmployee(props) {
     const navigate = useNavigate();
@@ -18,6 +18,8 @@ function AfertaEmployee(props) {
     const fulInfo = useSelector(state => state.fulInfo)
     const [message, setMessage] = useState('');
     const [sucsessText, setSucsessText] = useState('');
+    const [loading, setLoading] = useState(false);
+
 
 
     useEffect(() => {
@@ -29,20 +31,21 @@ function AfertaEmployee(props) {
         window.scroll(0, 0)
     }, [])
     const onFinish = (values) => {
-        console.log('Success:', values);
+        setLoading(true)
         if (values.remember === true){
             axios.post(`${ApiUrl}/api/application/submit` , fulInfo[0] , {
                 headers: {"Content-Type": "application/json"}
-
             }).then((res)=>{
-                console.log(res.data)
+                setLoading(false)
                 if (res.data?.isSuccess ===true){
                     setSucsessText("Ma'lumotlaringiz yuborildi")
-                    navigate('/')
+                    document.location="https://internet.tdtu.uz"
                 }
                 else {setMessage(res.data?.message)}
             }).catch((error)=>{
                 console.log(error)
+                setLoading(false)
+
             })
         }
         else {}
@@ -65,7 +68,9 @@ function AfertaEmployee(props) {
     return (
         <div className='studentInfoBox'>
             <Navbar/>
-
+            {loading ?
+                <Loading/>
+                :
             <div data-aos="flip-left" className="aferta">
                 <h4 className='text-center'>Universitet hududida Wi-Fi tarmog'idan foydalanish shartlari</h4>
                 <p className=''>
@@ -122,11 +127,10 @@ function AfertaEmployee(props) {
                     </Form>
 
                 </div>
-
-
-
             </div>
+            }
             <Footer/>
+
         </div>
     );
 }

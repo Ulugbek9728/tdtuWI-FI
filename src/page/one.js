@@ -35,11 +35,11 @@ function One(props) {
                             Hodimlar (Hemis login parol orqali)
                         </button>
                     </a>
-                    <a href={'https://t.me/tdtu_rttm_bot'} target='_blank'>
+
                         <button type="submit" className="form-control my-4">
-                            Telegram bot orqali
+                            Telegram bot orqali (@tdtu_rttm_bot)
                         </button>
-                    </a>
+
                 </div>
                 <img className="GroupImg" src="./img/Group5.svg" alt=""/>
             </div>

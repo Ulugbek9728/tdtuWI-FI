@@ -11,6 +11,7 @@ import {toast} from "react-toastify";
 
 
 import axios from "axios";
+import Loading from "../componenta/loading";
 
 function Aferta(props) {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ function Aferta(props) {
     const fulInfo = useSelector(state => state.fulInfo)
     const [message, setMessage] = useState('');
     const [sucsessText, setSucsessText] = useState('');
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
@@ -27,21 +29,24 @@ function Aferta(props) {
         }
         window.scroll(0, 0)
     }, [])
+    document.location="https://internet.tdtu.uz"
 
     const onFinish = (values) => {
-        console.log('Success:', values);
+        setLoading(true)
         if (values.remember === true){
             axios.post(`${ApiUrl}/api/application/submit` , fulInfo[0] , {
                 headers: {"Content-Type": "application/json"}
 
             }).then((res)=>{
-                console.log(res.data)
+                setLoading(false)
                 if (res.data?.isSuccess ===true){
                     setSucsessText("Ma'lumotlaringiz yuborildi")
-                    navigate('/')
+                    document.location="https://internet.tdtu.uz"
                 }
                 else {setMessage(res.data?.message)}
             }).catch((error)=>{
+                setLoading(false)
+
                 console.log(error)
             })
         }
@@ -64,7 +69,9 @@ function Aferta(props) {
     return (
         <div className='studentInfoBox'>
             <Navbar/>
-
+            {loading ?
+                <Loading/>
+                :
             <div data-aos="flip-left" className="aferta">
                 <h4 className='text-center'>Universitet hududida Wi-Fi tarmog'idan foydalanish shartlari</h4>
                 <p className=''>
@@ -125,6 +132,7 @@ function Aferta(props) {
 
 
             </div>
+            }
             <Footer/>
         </div>
     );
