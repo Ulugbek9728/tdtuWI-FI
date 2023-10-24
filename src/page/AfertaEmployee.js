@@ -24,7 +24,6 @@ function AfertaEmployee(props) {
 
     useEffect(() => {
         AOS.init();
-
         if (fulInfo[0]?.employee?.phone===''){
             navigate("/employee")
         }

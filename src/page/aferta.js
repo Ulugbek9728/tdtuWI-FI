@@ -29,7 +29,6 @@ function Aferta(props) {
         }
         window.scroll(0, 0)
     }, [])
-    document.location="https://internet.tdtu.uz"
 
     const onFinish = (values) => {
         setLoading(true)
