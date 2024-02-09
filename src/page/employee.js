@@ -10,6 +10,7 @@ import {useSearchParams} from 'react-router-dom';
 import axios from "axios";
 import {ApiUrl} from "../componenta/domenName";
 import Loading from "../componenta/loading";
+import LoginParol from "../componenta/loginParol";
 
 
 function Employee(props) {
@@ -17,11 +18,16 @@ function Employee(props) {
     const dispatch = useDispatch()
 
     const [loading, setLoading] = useState(false);
+    const [Login, setLogin] = useState(false);
+
     const [Employee, setEmployee] = useState({});
+    const [EmployeeLogin, setEmployeeLogin] = useState({});
     const [data, setdata] = useState(null);
 
     const [searchParams] = useSearchParams();
+
     const fulInfo = useSelector(state => state.fulInfo)
+
     const [tel, setTel] = useState('+998');
 
     useEffect(() => {
@@ -85,8 +91,10 @@ function Employee(props) {
                     department: response.data?.data?.department,
                     staffPosition:response.data?.data?.staffPosition,
                 })
+                setLogin(response.data.data.exist)
+                setEmployeeLogin(response.data.data.loginPasswordDTO)
             }
-            console.log(response)
+            console.log(response.data.data)
         }).catch((error) => {
             console.log(error);
             setLoading(false)
@@ -119,52 +127,57 @@ function Employee(props) {
                         {}
                     </div>
                     <hr/>
-                    <p className='Label'>Wi-Fi dan foydalanishga Login, Parol olish uchun telefon raqamni kiriting.
-                        Ma'lumotlaringiz tasdiqlansa kiritgan telefon raqamingizga Login Parol ni sms tariqa yuboramiz.
-                    </p>
+                    {
+                        Login ? <LoginParol loginn={{login:EmployeeLogin.username, parol:EmployeeLogin.password}}/> :
+
+                            <>
+                                <p className='Label'>Wi-Fi dan foydalanishga Login, Parol olish uchun telefon raqamni kiriting.
+                                    Ma'lumotlaringiz tasdiqlansa kiritgan telefon raqamingizga Login Parol ni sms tariqa yuboramiz.
+                                </p>
+
+                                <Form name="wrap" wrapperCol={{flex: 1,}} colon={false} onFinish={onFinish}
+                                      fields={[{
+                                          name: 'Tel',
+                                          value: tel,
+                                      }]}>
+                                    <Form.Item
+                                        name="Tel"
+                                        rules={[
+                                            {
+
+                                                required: true,
+                                                message: 'Telefon raqamingizni kiriting',
+                                            },
+
+                                            {
+                                                pattern: new RegExp(/^[0-9]+$/),
+                                                message: 'Faqat raqam kiritilishi kerak'
+                                            },
+                                            {
+                                                max: 9,
+                                                min: 9,
+                                                message: "Telefon raqam noto'g'ri kiritildi"
+                                            }
+                                        ]}
+                                    >
+                                        <Input value={fulInfo[0]?.emlpoyee?.phone} addonBefore="+998" showCount maxLength={9}
+                                               onChange={(e) => setTel(`${e.target.value}`)}/>
+                                    </Form.Item>
+
+                                    <Form.Item className='button d-flex justify-content-between'>
+                                        <Button className='btn btn-success mt-4' onClick={() => navigate('/')}>
+                                            <i className="fa-solid fa-angles-left mx-1"/> Ortga
+                                        </Button>
+                                        <Button htmlType="submit" className='btn btn-success mt-4'>
+                                            Keyingisi <i className="fa-solid fa-angles-right mx-1"/>
+                                        </Button>
+                                    </Form.Item>
+                                </Form>
+                            </>
+                    }
 
 
-                    <Form name="wrap" wrapperCol={{flex: 1,}} colon={false} onFinish={onFinish}
-                          fields={[{
-                              name: 'Tel',
-                              value: tel,
-                          }]}>
-                        <Form.Item
-                            name="Tel"
-                            rules={[
-                                {
 
-                                    required: true,
-                                    message: 'Telefon raqamingizni kiriting',
-                                },
-
-                                {
-                                    pattern: new RegExp(/^[0-9]+$/),
-                                    message: 'Faqat raqam kiritilishi kerak'
-                                },
-                                {
-                                    max: 9,
-                                    min: 9,
-                                    message: "Telefon raqam noto'g'ri kiritildi"
-                                }
-                            ]}
-                        >
-                            <Input value={fulInfo[0]?.emlpoyee?.phone} addonBefore="+998" showCount maxLength={9}
-                                   onChange={(e) => setTel(`${e.target.value}`)}/>
-                        </Form.Item>
-
-
-                        <Form.Item className='button d-flex justify-content-between'>
-                            <Button className='btn btn-success mt-4' onClick={() => navigate('/')}>
-                                <i className="fa-solid fa-angles-left mx-1"/> Ortga
-                            </Button>
-                            <Button htmlType="submit" className='btn btn-success mt-4'>
-                                Keyingisi <i className="fa-solid fa-angles-right mx-1"/>
-                            </Button>
-                        </Form.Item>
-
-
-                    </Form>
                 </div>
             }
 

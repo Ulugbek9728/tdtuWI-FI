@@ -20,12 +20,15 @@ function App(props) {
             <ToastContainer/>
             <Routes>
                 <Route path={"/"} element={<One/>}/>
+
                 <Route path={"/student"} element={<SignIn/>}/>
 
                 <Route path={"/studentInfo"} element={<StudentInfo/>}/>
                 <Route path={"/shartlar"} element={<Aferta/>}/>
+
                 <Route path={"/employee"} element={<Employee/>}/>
                 <Route path={"/shartlaremployee"} element={<AfertaEmployee/>}/>
+
 
             </Routes>
         </div>

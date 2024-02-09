@@ -40,9 +40,11 @@ function Aferta(props) {
                 setLoading(false)
                 if (res.data?.isSuccess ===true){
                     setSucsessText("Ma'lumotlaringiz yuborildi")
-                    document.location="https://internet.tdtu.uz"
+                    navigate("/studentInfo")
                 }
-                else {setMessage(res.data?.message)}
+                else {setMessage(res.data?.message)
+                    navigate("/studentInfo")
+                }
             }).catch((error)=>{
                 setLoading(false)
 
@@ -51,6 +53,7 @@ function Aferta(props) {
         }
         else {}
     };
+
     useEffect(() => {
         setMessage('')
         setSucsessText('')

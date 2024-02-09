@@ -35,12 +35,14 @@ function AfertaEmployee(props) {
             axios.post(`${ApiUrl}/api/application/submit` , fulInfo[0] , {
                 headers: {"Content-Type": "application/json"}
             }).then((res)=>{
+                console.log(res)
                 setLoading(false)
                 if (res.data?.isSuccess ===true){
                     setSucsessText("Ma'lumotlaringiz yuborildi")
-                    document.location="https://internet.tdtu.uz"
+                    navigate("/employee")
                 }
-                else {setMessage(res.data?.message)}
+                else {setMessage(res.data?.message)
+                }
             }).catch((error)=>{
                 console.log(error)
                 setLoading(false)
@@ -49,7 +51,6 @@ function AfertaEmployee(props) {
         }
         else {}
     };
-    console.log(fulInfo)
     useEffect(() => {
         setMessage('')
         setSucsessText('')
@@ -64,6 +65,7 @@ function AfertaEmployee(props) {
             toast.error(message)
         }
     }
+
     return (
         <div className='studentInfoBox'>
             <Navbar/>
