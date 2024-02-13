@@ -80,11 +80,12 @@ function StudentInfo(props) {
             })
             setdata(JSON.stringify(response.data.data))
 
-            axios.get(`${ApiUrl}api/application/check`, {
+            axios.get(`${ApiUrl}/api/application/check`, {
                 params: {login:response.data.data.student_id_number}
             }).then((response) => {
                 setLogin(true)
                 setStudentLogin(response.data.data.loginPasswordDTO)
+                console.log(response.data.data.loginPasswordDTO)
             }).catch((error) => {
                 console.log(error);
 
