@@ -11,9 +11,6 @@ import './componenta/main.css'
 import Employee from "./page/employee";
 import AfertaEmployee from "./page/AfertaEmployee";
 
-
-
-
 function App(props) {
     return (
         <div>
